@@ -1,4 +1,4 @@
-/* RESET & BASE */
+/* ========== RESET & BASE ========== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -9,40 +9,39 @@ body {
     font-family: 'Segoe UI', Arial, sans-serif;
     color: #222;
     background: #f7f9fa;
-    line-height: 1.7;
+    line-height: 1.6;
 }
 
 a {
     color: #007a3d;
     text-decoration: none;
-    transition: color 0.2s;
+    transition: 0.2s;
 }
 
 a:hover {
     color: #228B22;
-    text-decoration: underline;
 }
 
 ul {
     list-style: none;
 }
 
-/* HEADER */
+/* ========== HEADER ========== */
 header {
     background: #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
+/* Top contact bar */
 .contact-bar {
     background: #007a3d;
     color: #fff;
     text-align: center;
-    font-size: 1rem;
-    padding: 8px 0;
-    letter-spacing: 1px;
+    font-size: 0.95rem;
+    padding: 6px 0;
 }
 
 .contact-bar a {
@@ -50,6 +49,7 @@ header {
     font-weight: 600;
 }
 
+/* Header main container */
 header .container {
     max-width: 1200px;
     margin: auto;
@@ -62,7 +62,7 @@ header .container {
 .logo-area {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 10px;
 }
 
 .logo-area img {
@@ -73,31 +73,32 @@ header .container {
     font-size: 1.4rem;
     font-weight: 700;
     color: #007a3d;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 }
 
-/* NAVIGATION */
+/* ========== NAVIGATION ========== */
 nav {
     flex: 1;
 }
 
 nav ul.main-menu {
     display: flex;
-    gap: 4px;
+    gap: 2px;
+    justify-content: flex-end;
 }
 
 nav ul.main-menu>li {
     position: relative;
 }
 
+/* Menu chính */
 nav ul.main-menu>li>a {
     display: block;
-    padding: 12px 22px;
+    padding: 14px 20px;
     font-weight: 600;
     color: #007a3d;
-    border-radius: 8px 8px 0 0;
-    background: transparent;
-    transition: background 0.2s, color 0.2s;
+    border-radius: 6px;
+    transition: 0.2s;
 }
 
 nav ul.main-menu>li>a:hover,
@@ -106,75 +107,117 @@ nav ul.main-menu>li.active>a {
     color: #228B22;
 }
 
+/* Dropdown mặc định */
 nav ul ul {
-    display: none;
     position: absolute;
     top: 100%;
+    /* luôn nằm dưới menu cha */
     left: 0;
-    min-width: 240px;
+    min-width: 250px;
     background: #fff;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
-    border-radius: 0 0 12px 12px;
-    padding: 8px 0;
-    z-index: 100;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+    border-radius: 6px;
+    padding: 6px 0;
+    z-index: 9999;
+
+    /* ẩn + hiệu ứng */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.25s ease;
 }
 
-nav ul.main-menu>li:hover>ul,
-nav ul.main-menu>li:focus-within>ul {
-    display: block;
+/* Hiển thị khi hover */
+nav ul li:hover>ul,
+nav ul li:focus-within>ul {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
-nav ul ul li {
-    width: 100%;
-}
-
+/* Link trong dropdown */
 nav ul ul li a {
-    color: #007a3d;
-    background: none;
-    padding: 12px 24px;
-    font-size: 1rem;
-    border-radius: 0;
+    display: block;
+    padding: 12px 18px;
+    font-size: 0.95rem;
     font-weight: 500;
-    transition: background 0.2s, color 0.2s;
+    color: #007a3d;
+    transition: 0.2s;
     white-space: normal;
-    line-height: 1.5;
 }
 
-nav ul ul li a:hover,
-nav ul ul li.active>a {
+nav ul ul li a:hover {
     background: #e0ffe0;
     color: #228B22;
 }
 
+/* Cấp 3 trở đi: xổ ngang */
 nav ul ul ul {
-    left: 100%;
     top: 0;
-    border-radius: 0 12px 12px 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+    left: 100%;
+    margin-left: 4px;
+    min-width: 240px;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(10px);
+    transition: all 0.25s ease;
 }
 
-/* HERO */
+/* Hiển thị cấp 3 khi hover */
+nav ul ul li:hover>ul,
+nav ul ul li:focus-within>ul {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* Mũi tên submenu */
+nav ul.main-menu>li>a:after {
+    content: " ▼";
+    font-size: 0.6rem;
+    color: #555;
+    display: inline-block;
+    margin-left: 4px;
+    transition: 0.2s;
+}
+
+nav ul.main-menu>li:hover>a:after {
+    transform: rotate(180deg);
+}
+
+nav ul ul li>a:after {
+    content: " ►";
+    font-size: 0.6rem;
+    float: right;
+    color: #777;
+}
+
+/* Nếu không có submenu thì bỏ mũi tên */
+nav ul ul li:not(:has(ul))>a:after {
+    content: "";
+}
+
+/* ========== HERO ========== */
 .hero {
     position: relative;
     text-align: center;
-    background: #fff;
-    min-height: 340px;
+    min-height: 360px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 18px;
-    margin: 32px auto 0 auto;
+    margin: 28px auto;
     max-width: 1100px;
-    box-shadow: 0 2px 16px rgba(0, 100, 0, 0.06);
+    border-radius: 14px;
     overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0, 100, 0, 0.08);
 }
 
 .hero img {
     width: 100%;
-    max-height: 340px;
+    height: 100%;
     object-fit: cover;
     filter: brightness(70%);
-    border-radius: 18px;
 }
 
 .hero-text {
@@ -183,18 +226,15 @@ nav ul ul ul {
     left: 50%;
     transform: translate(-50%, -50%);
     color: #fff;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
-    background: rgba(0, 122, 61, 0.55);
-    padding: 32px 48px;
-    border-radius: 16px;
-    min-width: 320px;
+    background: rgba(0, 122, 61, 0.6);
+    padding: 28px 36px;
+    border-radius: 12px;
 }
 
 .hero-text h1 {
-    font-size: 2.5rem;
+    font-size: 2.4rem;
+    margin-bottom: 10px;
     font-weight: 800;
-    margin-bottom: 8px;
-    letter-spacing: 2px;
 }
 
 .hero-text .slogan {
@@ -202,80 +242,65 @@ nav ul ul ul {
     font-style: italic;
 }
 
-/* CONTACT BAR */
-section.contact-bar {
-    background: #228B22;
-    color: #fff;
-    text-align: center;
-    padding: 12px 0;
-    font-size: 1.1rem;
-    letter-spacing: 1px;
-    margin: 0 auto 24px auto;
-    border-radius: 8px;
-    max-width: 900px;
-}
-
-/* MAIN SECTIONS */
+/* ========== MAIN CONTENT ========== */
 section {
     max-width: 900px;
-    margin: 32px auto;
+    margin: 28px auto;
     background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 2px 16px rgba(0, 100, 0, 0.06);
-    padding: 32px 28px;
+    border-radius: 14px;
+    box-shadow: 0 2px 14px rgba(0, 100, 0, 0.06);
+    padding: 28px;
 }
 
 section h2 {
     color: #007a3d;
-    font-size: 2rem;
-    margin-bottom: 18px;
+    font-size: 1.8rem;
+    margin-bottom: 14px;
     font-weight: 700;
-    border-left: 5px solid #FFD700;
-    padding-left: 12px;
+    border-left: 4px solid #FFD700;
+    padding-left: 10px;
 }
 
 section ul {
-    margin-left: 24px;
-    margin-bottom: 12px;
     list-style: disc;
+    margin: 12px 0 12px 24px;
 }
 
 section li {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 blockquote {
     background: #e0ffe0;
     border-left: 6px solid #228B22;
-    padding: 16px 24px;
+    padding: 14px 20px;
     font-style: italic;
     color: #228B22;
     border-radius: 8px;
-    margin: 18px 0;
+    margin: 14px 0;
 }
 
-/* FOOTER */
+/* ========== FOOTER ========== */
 footer {
     background: #007a3d;
     color: #fff;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    font-size: 1rem;
-    padding: 32px 24px;
-    border-radius: 24px 24px 0 0;
-    margin-top: 48px;
+    padding: 28px 20px;
+    border-radius: 20px 20px 0 0;
+    margin-top: 40px;
 }
 
 .footer-col {
     flex: 1;
     min-width: 220px;
-    margin: 12px;
+    margin: 10px;
 }
 
 .footer-col h3 {
     font-size: 1.2rem;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
     color: #FFD700;
     font-weight: 700;
     border-bottom: 2px solid #FFD700;
@@ -283,17 +308,8 @@ footer {
     padding-bottom: 4px;
 }
 
-.footer-col ul {
-    list-style: none;
-    padding: 0;
-}
-
 .footer-col ul li {
-    margin-bottom: 8px;
-}
-
-.footer-col p {
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 footer a {
@@ -301,74 +317,44 @@ footer a {
     font-weight: 600;
 }
 
-/* RESPONSIVE */
-@media (max-width: 1100px) {
-
-    .hero,
-    section {
-        max-width: 98vw;
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1000px) {
+    nav ul.main-menu {
+        flex-wrap: wrap;
+        justify-content: flex-start;
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
     header .container {
         flex-direction: column;
         align-items: flex-start;
-        padding: 12px 8vw;
     }
 
     nav ul.main-menu {
         flex-direction: column;
-        gap: 0;
         width: 100%;
     }
 
     nav ul.main-menu>li>a {
-        padding: 14px 16px;
+        padding: 12px 16px;
         font-size: 1rem;
+        border-radius: 0;
+        border-bottom: 1px solid #eee;
     }
 
     nav ul ul {
         position: static;
-        min-width: 100%;
         box-shadow: none;
-        border-radius: 0 0 12px 12px;
+        min-width: 100%;
     }
 
-    .hero-text {
-        padding: 18px 8vw;
-    }
-
-    section {
-        padding: 18px 8vw;
+    nav ul ul ul {
+        margin-left: 0;
     }
 
     footer {
         flex-direction: column;
         text-align: center;
-        padding: 18px 8px;
-    }
-
-    .footer-col {
-        margin: 8px 0;
-    }
-}
-
-@media (max-width: 600px) {
-    .company-name {
-        font-size: 1rem;
-    }
-
-    section h2 {
-        font-size: 1.3rem;
-    }
-
-    section {
-        padding: 12px 2vw;
-    }
-
-    .hero-text {
-        font-size: 1rem;
-        padding: 12px 4vw;
     }
 }
