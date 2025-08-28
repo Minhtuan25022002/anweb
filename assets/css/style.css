@@ -1,0 +1,374 @@
+/* RESET & BASE */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #222;
+    background: #f7f9fa;
+    line-height: 1.7;
+}
+
+a {
+    color: #007a3d;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #228B22;
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+}
+
+/* HEADER */
+header {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.contact-bar {
+    background: #007a3d;
+    color: #fff;
+    text-align: center;
+    font-size: 1rem;
+    padding: 8px 0;
+    letter-spacing: 1px;
+}
+
+.contact-bar a {
+    color: #FFD700;
+    font-weight: 600;
+}
+
+header .container {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo-area img {
+    height: 44px;
+}
+
+.company-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #007a3d;
+    letter-spacing: 2px;
+}
+
+/* NAVIGATION */
+nav {
+    flex: 1;
+}
+
+nav ul.main-menu {
+    display: flex;
+    gap: 4px;
+}
+
+nav ul.main-menu>li {
+    position: relative;
+}
+
+nav ul.main-menu>li>a {
+    display: block;
+    padding: 12px 22px;
+    font-weight: 600;
+    color: #007a3d;
+    border-radius: 8px 8px 0 0;
+    background: transparent;
+    transition: background 0.2s, color 0.2s;
+}
+
+nav ul.main-menu>li>a:hover,
+nav ul.main-menu>li.active>a {
+    background: #e0ffe0;
+    color: #228B22;
+}
+
+nav ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 240px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+    border-radius: 0 0 12px 12px;
+    padding: 8px 0;
+    z-index: 100;
+}
+
+nav ul.main-menu>li:hover>ul,
+nav ul.main-menu>li:focus-within>ul {
+    display: block;
+}
+
+nav ul ul li {
+    width: 100%;
+}
+
+nav ul ul li a {
+    color: #007a3d;
+    background: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 0;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+    white-space: normal;
+    line-height: 1.5;
+}
+
+nav ul ul li a:hover,
+nav ul ul li.active>a {
+    background: #e0ffe0;
+    color: #228B22;
+}
+
+nav ul ul ul {
+    left: 100%;
+    top: 0;
+    border-radius: 0 12px 12px 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.10);
+}
+
+/* HERO */
+.hero {
+    position: relative;
+    text-align: center;
+    background: #fff;
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    margin: 32px auto 0 auto;
+    max-width: 1100px;
+    box-shadow: 0 2px 16px rgba(0, 100, 0, 0.06);
+    overflow: hidden;
+}
+
+.hero img {
+    width: 100%;
+    max-height: 340px;
+    object-fit: cover;
+    filter: brightness(70%);
+    border-radius: 18px;
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    background: rgba(0, 122, 61, 0.55);
+    padding: 32px 48px;
+    border-radius: 16px;
+    min-width: 320px;
+}
+
+.hero-text h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+}
+
+.hero-text .slogan {
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+/* CONTACT BAR */
+section.contact-bar {
+    background: #228B22;
+    color: #fff;
+    text-align: center;
+    padding: 12px 0;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    margin: 0 auto 24px auto;
+    border-radius: 8px;
+    max-width: 900px;
+}
+
+/* MAIN SECTIONS */
+section {
+    max-width: 900px;
+    margin: 32px auto;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(0, 100, 0, 0.06);
+    padding: 32px 28px;
+}
+
+section h2 {
+    color: #007a3d;
+    font-size: 2rem;
+    margin-bottom: 18px;
+    font-weight: 700;
+    border-left: 5px solid #FFD700;
+    padding-left: 12px;
+}
+
+section ul {
+    margin-left: 24px;
+    margin-bottom: 12px;
+    list-style: disc;
+}
+
+section li {
+    margin-bottom: 8px;
+}
+
+blockquote {
+    background: #e0ffe0;
+    border-left: 6px solid #228B22;
+    padding: 16px 24px;
+    font-style: italic;
+    color: #228B22;
+    border-radius: 8px;
+    margin: 18px 0;
+}
+
+/* FOOTER */
+footer {
+    background: #007a3d;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-size: 1rem;
+    padding: 32px 24px;
+    border-radius: 24px 24px 0 0;
+    margin-top: 48px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 220px;
+    margin: 12px;
+}
+
+.footer-col h3 {
+    font-size: 1.2rem;
+    margin-bottom: 12px;
+    color: #FFD700;
+    font-weight: 700;
+    border-bottom: 2px solid #FFD700;
+    display: inline-block;
+    padding-bottom: 4px;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 8px;
+}
+
+.footer-col p {
+    margin-bottom: 8px;
+}
+
+footer a {
+    color: #FFD700;
+    font-weight: 600;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+
+    .hero,
+    section {
+        max-width: 98vw;
+    }
+}
+
+@media (max-width: 900px) {
+    header .container {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 8vw;
+    }
+
+    nav ul.main-menu {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+    }
+
+    nav ul.main-menu>li>a {
+        padding: 14px 16px;
+        font-size: 1rem;
+    }
+
+    nav ul ul {
+        position: static;
+        min-width: 100%;
+        box-shadow: none;
+        border-radius: 0 0 12px 12px;
+    }
+
+    .hero-text {
+        padding: 18px 8vw;
+    }
+
+    section {
+        padding: 18px 8vw;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+        padding: 18px 8px;
+    }
+
+    .footer-col {
+        margin: 8px 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .company-name {
+        font-size: 1rem;
+    }
+
+    section h2 {
+        font-size: 1.3rem;
+    }
+
+    section {
+        padding: 12px 2vw;
+    }
+
+    .hero-text {
+        font-size: 1rem;
+        padding: 12px 4vw;
+    }
+}
