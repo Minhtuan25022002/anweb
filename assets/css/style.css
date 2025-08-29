@@ -1,64 +1,93 @@
 /* ========== RESET & BASE ========== */
-* {
+:root {
+    --green: #007a3d;
+    --green-dark: #004a2a;
+    --accent: #FFD700;
+}
+
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+đọc và suy nghĩ cách làm,
+gạch chân tôi đã fix html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    height: 100%;
+    max-width: 100%;
+}
+
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
+    min-height: 100%;
+    font-family: "Segoe UI", Arial, sans-serif;
     color: #222;
-    background: #f7f9fa;
-    line-height: 1.6;
+    background: #f4f8f6;
+    line-height: 1.7;
+    font-size: 1rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-    color: #007a3d;
-    text-decoration: none;
-    transition: 0.2s;
+/* ensure media don't overflow */
+img,
+picture,
+video,
+iframe {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
-a:hover {
-    color: #228B22;
+/* words long break to avoid overflow */
+* {
+    word-break: break-word;
+    overflow-wrap: anywhere;
 }
 
-ul {
-    list-style: none;
+/* ===== layout container helper ===== */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 24px;
+    box-sizing: border-box;
 }
 
-/* ========== HEADER ========== */
+/* ===== Header ===== */
 header {
     background: #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.02);
 }
 
-/* Top contact bar */
 .contact-bar {
-    background: #007a3d;
+    background: var(--green);
     color: #fff;
     text-align: center;
-    font-size: 0.95rem;
+    font-size: .95rem;
     padding: 6px 0;
 }
 
 .contact-bar a {
-    color: #FFD700;
+    color: var(--accent);
     font-weight: 600;
 }
 
-/* Header main container */
 header .container {
-    max-width: 1200px;
-    margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 12px 24px;
 }
 
+/* logo */
 .logo-area {
     display: flex;
     align-items: center;
@@ -67,119 +96,162 @@ header .container {
 
 .logo-area img {
     height: 44px;
+    display: block;
 }
 
 .company-name {
     font-size: 1.4rem;
     font-weight: 700;
-    color: #007a3d;
+    color: var(--green);
     letter-spacing: 1px;
 }
 
-/* ========== NAVIGATION ========== */
+/* ===== Navigation ===== */
 nav {
     flex: 1;
+    min-width: 0;
 }
 
+nav a {
+    text-decoration: none;
+    /* bỏ gạch dưới */
+    color: #006400;
+    /* xanh đậm hoặc màu bạn chọn */
+    display: block;
+    padding: 10px 15px;
+}
+
+/* Khi hover vào link */
+nav a:hover {
+    background-color: #006400;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* Reset list mặc định */
+nav ul {
+    list-style: none;
+    /* bỏ dấu chấm đen */
+    margin: 0;
+    padding: 0;
+}
+
+/* min-width:0 helps flex children not overflow */
 nav ul.main-menu {
     display: flex;
-    gap: 2px;
+    gap: 4px;
     justify-content: flex-end;
+    align-items: center;
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    white-space: nowrap;
+    /* keep menu items in one line by default */
+    overflow: visible;
 }
 
+/* make sure li can't expand beyond container */
 nav ul.main-menu>li {
     position: relative;
 }
 
-/* Menu chính */
+/* main links */
 nav ul.main-menu>li>a {
     display: block;
     padding: 14px 20px;
     font-weight: 600;
-    color: #007a3d;
+    color: var(--green);
     border-radius: 6px;
-    transition: 0.2s;
+    transition: background .2s, color .2s;
+    text-decoration: none;
 }
 
 nav ul.main-menu>li>a:hover,
 nav ul.main-menu>li.active>a {
-    background: #e0ffe0;
-    color: #228B22;
+    background: #e9fff0;
+    color: #1d6b2f;
 }
 
-/* Dropdown mặc định */
+/* ========== dropdown (cấp 2) ========== */
 nav ul ul {
     position: absolute;
     top: 100%;
-    /* luôn nằm dưới menu cha */
     left: 0;
-    min-width: 250px;
+    min-width: 240px;
     background: #fff;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-    border-radius: 6px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
+    border-radius: 8px;
     padding: 6px 0;
-    z-index: 9999;
-
-    /* ẩn + hiệu ứng */
+    z-index: 1100;
     opacity: 0;
     visibility: hidden;
-    transform: translateY(10px);
-    transition: all 0.25s ease;
+    transform: translateY(8px);
+    transition: opacity .22s ease, transform .22s ease, visibility 0s linear .22s;
+    pointer-events: none;
 }
 
-/* Hiển thị khi hover */
 nav ul li:hover>ul,
 nav ul li:focus-within>ul {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
+    pointer-events: auto;
 }
 
-/* Link trong dropdown */
-nav ul ul li a {
+/* dropdown items */
+nav ul ul li {
+    position: relative;
+}
+
+nav ul ul li>a {
     display: block;
     padding: 12px 18px;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: #007a3d;
-    transition: 0.2s;
-    white-space: normal;
+    font-size: .95rem;
+    font-weight: 600;
+    color: var(--green);
+    white-space: nowrap;
+    transition: background .18s, color .18s;
+    padding-right: 36px;
+    /* space for arrow */
+    border-radius: 6px;
 }
 
-nav ul ul li a:hover {
-    background: #e0ffe0;
-    color: #228B22;
+nav ul ul li>a:hover {
+    background: var(--green);
+    color: #fff;
 }
 
-/* Cấp 3 trở đi: xổ ngang */
+/* ========== cấp 3 (xổ ngang) ========== */
 nav ul ul ul {
     top: 0;
     left: 100%;
-    margin-left: 4px;
-    min-width: 240px;
-
+    min-width: 220px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
+    z-index: 1120;
     opacity: 0;
     visibility: hidden;
-    transform: translateX(10px);
-    transition: all 0.25s ease;
+    transform: translateX(8px);
+    transition: opacity .22s ease, transform .22s ease, visibility 0s linear .22s;
+    pointer-events: none;
 }
 
-/* Hiển thị cấp 3 khi hover */
 nav ul ul li:hover>ul,
 nav ul ul li:focus-within>ul {
     opacity: 1;
     visibility: visible;
     transform: translateX(0);
+    pointer-events: auto;
 }
 
-/* Mũi tên submenu */
+/* arrows */
 nav ul.main-menu>li>a:after {
     content: " ▼";
-    font-size: 0.6rem;
+    font-size: .6rem;
     color: #555;
-    display: inline-block;
-    margin-left: 4px;
-    transition: 0.2s;
+    margin-left: 6px;
+    transition: transform .2s;
 }
 
 nav ul.main-menu>li:hover>a:after {
@@ -188,36 +260,42 @@ nav ul.main-menu>li:hover>a:after {
 
 nav ul ul li>a:after {
     content: " ►";
-    font-size: 0.6rem;
-    float: right;
+    font-size: .6rem;
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
     color: #777;
 }
 
-/* Nếu không có submenu thì bỏ mũi tên */
 nav ul ul li:not(:has(ul))>a:after {
     content: "";
 }
 
-/* ========== HERO ========== */
+/* ===== HERO (single, safe) ===== */
 .hero {
     position: relative;
-    text-align: center;
-    min-height: 360px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 28px auto;
-    max-width: 1100px;
-    border-radius: 14px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 180px;
+    /* bạn muốn nhỏ hơn/nhỏ hơn nữa chỉnh ở đây */
+    min-height: 140px;
+    max-height: 420px;
+    border-radius: 0;
     overflow: hidden;
-    box-shadow: 0 2px 16px rgba(0, 100, 0, 0.08);
+    background: #f4f8f6;
+    box-sizing: border-box;
 }
 
 .hero img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: brightness(70%);
+    object-position: center;
+    filter: brightness(0.65);
+    max-width: 100%;
 }
 
 .hero-text {
@@ -226,70 +304,80 @@ nav ul ul li:not(:has(ul))>a:after {
     left: 50%;
     transform: translate(-50%, -50%);
     color: #fff;
-    background: rgba(0, 122, 61, 0.6);
-    padding: 28px 36px;
-    border-radius: 12px;
+    background: rgba(0, 122, 61, 0.62);
+    padding: 10px 16px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 86%;
 }
 
 .hero-text h1 {
-    font-size: 2.4rem;
-    margin-bottom: 10px;
+    font-size: 1.45rem;
+    margin-bottom: 6px;
     font-weight: 800;
 }
 
 .hero-text .slogan {
-    font-size: 1.2rem;
+    font-size: .95rem;
     font-style: italic;
 }
 
-/* ========== MAIN CONTENT ========== */
-section {
-    max-width: 900px;
-    margin: 28px auto;
+/* ===== MAIN SECTIONS ===== */
+section:not(.hero) {
+    max-width: 1000px;
+    margin: 32px auto;
     background: #fff;
     border-radius: 14px;
-    box-shadow: 0 2px 14px rgba(0, 100, 0, 0.06);
-    padding: 28px;
+    box-shadow: 0 2px 14px rgba(0, 100, 0, 0.08);
+    padding: 32px;
+    box-sizing: border-box;
 }
 
 section h2 {
-    color: #007a3d;
-    font-size: 1.8rem;
-    margin-bottom: 14px;
+    color: var(--green);
+    font-size: 1.9rem;
+    margin-bottom: 18px;
     font-weight: 700;
-    border-left: 4px solid #FFD700;
-    padding-left: 10px;
+    border-left: 5px solid var(--accent);
+    padding-left: 12px;
+}
+
+section p {
+    margin-bottom: 14px;
+    font-size: 1rem;
 }
 
 section ul {
     list-style: disc;
-    margin: 12px 0 12px 24px;
+    margin: 14px 0 14px 28px;
 }
 
 section li {
-    margin-bottom: 6px;
+    margin-bottom: 8px;
 }
 
 blockquote {
-    background: #e0ffe0;
-    border-left: 6px solid #228B22;
-    padding: 14px 20px;
+    background: #eaffea;
+    border-left: 6px solid var(--green);
+    padding: 16px 22px;
     font-style: italic;
-    color: #228B22;
-    border-radius: 8px;
-    margin: 14px 0;
+    color: var(--green);
+    border-radius: 10px;
+    margin: 18px 0;
 }
 
-/* ========== FOOTER ========== */
+/* ===== FOOTER ===== */
 footer {
-    background: #007a3d;
+    background: var(--green);
     color: #fff;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 28px 20px;
-    border-radius: 20px 20px 0 0;
+    border-radius: 0;
     margin-top: 40px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .footer-col {
@@ -299,11 +387,11 @@ footer {
 }
 
 .footer-col h3 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin-bottom: 10px;
-    color: #FFD700;
+    color: var(--accent);
     font-weight: 700;
-    border-bottom: 2px solid #FFD700;
+    border-bottom: 2px solid var(--accent);
     display: inline-block;
     padding-bottom: 4px;
 }
@@ -313,7 +401,7 @@ footer {
 }
 
 footer a {
-    color: #FFD700;
+    color: var(--accent);
     font-weight: 600;
 }
 
@@ -351,6 +439,10 @@ footer a {
 
     nav ul ul ul {
         margin-left: 0;
+        position: static;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
     }
 
     footer {
@@ -358,3 +450,26 @@ footer a {
         text-align: center;
     }
 }
+
+/* small screens adjustments */
+@media (max-width: 640px) {
+    .hero {
+        height: 150px;
+    }
+
+    .hero-text h1 {
+        font-size: 1.15rem;
+    }
+
+    .hero-text {
+        padding: 8px 12px;
+    }
+
+    section {
+        padding: 20px;
+        margin: 20px;
+    }
+}
+
+/* optional debug helper (uncomment while debugging) */
+/* * { outline: 1px dashed rgba(0,0,0,0.05); } */
