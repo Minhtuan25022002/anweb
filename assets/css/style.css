@@ -13,15 +13,6 @@
     padding: 0;
 }
 
-đọc và suy nghĩ cách làm,
-gạch chân tôi đã fix html {
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    height: 100%;
-    max-width: 100%;
-}
-
 body {
     min-height: 100%;
     font-family: "Segoe UI", Arial, sans-serif;
@@ -272,56 +263,167 @@ nav ul ul li:not(:has(ul))>a:after {
     content: "";
 }
 
-/* ===== HERO (single, safe) ===== */
+/* HERO / SLIDESHOW
+   - chỉ animate opacity (tránh scale gây mờ)
+   - có prev/next + indicators
+*/
 .hero {
     position: relative;
     width: 100%;
-    margin: 0;
-    padding: 0;
-    height: 800px;
-    min-height: 140px;
-    max-height: 1000px;
-    border-radius: 0;
+    height: 520px;
+    /* desktop hero height - chỉnh nếu muốn */
+    min-height: 280px;
+    max-height: 900px;
     overflow: hidden;
     background: #f4f8f6;
-    box-sizing: border-box;
 }
 
-.hero img {
-    display: block;
+/* slideshow container covers hero */
+.hero-slideshow {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/* slide images absolutely stacked */
+.hero-slideshow img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
-    filter: brightness(0.65);
-    max-width: 100%;
+    filter: brightness(0.66);
+    opacity: 0;
+    transition: opacity .9s ease-in-out;
+    will-change: opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.hero-slideshow img.active {
+    opacity: 1;
 }
 
 .hero-text {
     position: absolute;
-    top: 14%;
+    top: 20%;
     left: 20%;
-    transform: translate(-50%, -50%);
+    transform: translateX(-50%);
+    z-index: 30;
     color: #fff;
-    padding: 10px 16px;
-    border-radius: 10px;
     text-align: center;
-    max-width: 86%;
+    padding: 12px 18px;
+    max-width: 680px;
+    width: calc(100% - 48px);
+    box-sizing: border-box;
+    pointer-events: auto;
 }
 
 .hero-text h1 {
-    font-size: 4.45rem;
-    margin-bottom: 6px;
+    font-size: clamp(1.6rem, 3.2vw, 3.2rem);
     font-weight: 800;
+    margin: 0 0 8px 0;
+    line-height: 1.02;
+    text-shadow: 0 8px 24px rgba(0, 0, 0, 0.36);
 }
 
 .hero-text .slogan {
-    font-size: 1.20rem;
+    font-size: clamp(.95rem, 1.6vw, 1.12rem);
+    margin: 0 0 14px 0;
     font-style: italic;
+    text-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
 }
 
 .hero-cta {
-    max-width: 42%;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    color: var(--green-dark);
+    padding: 10px 14px;
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.16);
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    transition: transform .14s ease, box-shadow .14s ease;
+    font-size: 1rem;
+}
+
+.hero-cta--compact {
+    padding: 8px 10px;
+    font-size: .95rem;
+    gap: 6px;
+}
+
+.hero-cta:hover {
+    transform: translateY(-3px);
+}
+
+.hero-indicators {
+    position: absolute;
+    left: 50%;
+    bottom: 14px;
+    transform: translateX(-50%);
+    z-index: 35;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.hero-indicators button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.45);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: transform .12s ease, background .12s ease;
+}
+
+.hero-indicators button.active {
+    background: #fff;
+    transform: scale(1.25);
+}
+
+/* prev/next controls */
+.hero-prev,
+.hero-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 35;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.32);
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background .12s, transform .12s;
+}
+
+.hero-prev {
+    left: 12px;
+}
+
+.hero-next {
+    right: 12px;
+}
+
+.hero-prev:hover,
+.hero-next:hover {
+    background: rgba(0, 0, 0, 0.55);
+    transform: translateY(-50%) scale(1.03);
 }
 
 /* ===== MAIN SECTIONS ===== */
@@ -456,7 +558,7 @@ footer a {
 /* small screens adjustments */
 @media (max-width: 640px) {
     .hero {
-        height: 150px;
+        height: 300px;
     }
 
     .hero-text h1 {
@@ -471,8 +573,14 @@ footer a {
         padding: 20px;
         margin: 20px;
     }
+
+    .hero-prev,
+    .hero-next {
+        display: none;
+    }
 }
 
+/* CTA Floating Buttons (kept as-is) */
 .cta-buttons {
     position: fixed;
     bottom: 20px;
@@ -575,5 +683,199 @@ footer a {
         justify-content: center;
         padding: 0;
         font-size: 22px;
+    }
+}
+
+.hero .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: auto !important;
+    min-width: 180px;
+    padding: 10px 22px;
+    font-size: clamp(.95rem, 1.6vw, 1rem);
+    background: #fff !important;
+    color: var(--green-dark) !important;
+    border-radius: 999px;
+    border: 2px solid rgba(0, 0, 0, 0.06) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.14) !important;
+    text-decoration: none;
+    font-weight: 700;
+    justify-content: center;
+}
+
+@media (max-width: 640px) {
+    .hero .hero-cta {
+        min-width: 150px;
+        padding: 10px 16px;
+        font-size: .95rem;
+    }
+
+    .hero-text {
+        left: 50%;
+        top: 18%;
+        transform: translateX(-50%);
+        max-width: 92%;
+        padding: 8px 12px;
+    }
+}
+
+/* === Hamburger + responsive header (applies up to 1024px) === */
+
+/* basic hamburger look */
+.nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    width: 44px;
+    height: 44px;
+    padding: 6px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 8px;
+    color: var(--green);
+    z-index: 3000;
+}
+
+.nav-toggle .bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--green);
+    margin: 3px 0;
+    transition: transform .25s ease, opacity .25s ease;
+}
+
+.sr-only {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* collapse behavior for <= 1024px (covers iPad and phones) */
+@media (max-width: 1024px) {
+
+    /* show hamburger */
+    .nav-toggle {
+        display: inline-flex;
+    }
+
+    /* collapse nav into a sliding panel */
+    nav {
+        display: block;
+        /* keep it in flow so max-height works */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .36s cubic-bezier(.2, .9, .2, 1), opacity .28s ease;
+        opacity: 0;
+    }
+
+    /* expanded state */
+    header.nav-open nav {
+        max-height: 1400px;
+        /* đủ cho menu nhiều mục, tăng nếu cần */
+        opacity: 1;
+    }
+
+    /* adapt container: logo left, hamburger right */
+    header .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    /* stacked menu */
+    nav ul.main-menu {
+        display: block;
+        padding: 8px 6px;
+        margin: 8px 0;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    nav ul.main-menu>li {
+        margin: 0;
+        border-bottom: 1px solid #f2f2f2;
+    }
+
+    nav ul.main-menu>li>a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 14px;
+        color: var(--green);
+        font-weight: 700;
+    }
+
+    /* compact submenus hidden by default, open when .open on li */
+    nav ul.main-menu li>ul {
+        display: none;
+        padding-left: 12px;
+        margin-bottom: 8px;
+        background: transparent;
+    }
+
+    nav ul.main-menu li.open>ul {
+        display: block;
+    }
+
+    nav ul.main-menu li>ul li>a {
+        padding: 8px 12px;
+        font-weight: 600;
+        color: #1d6b2f;
+    }
+
+    /* caret icon for parent items */
+    nav ul.main-menu li.has-children>a::after {
+        content: "▾";
+        font-size: 0.95rem;
+        color: #4b8a59;
+        transition: transform .18s ease;
+    }
+
+    nav ul.main-menu li.open.has-children>a::after {
+        transform: rotate(180deg);
+    }
+
+    /* reduce contact-bar size (optional) */
+    .contact-bar {
+        font-size: .86rem;
+        padding: 6px 8px;
+    }
+
+    /* when nav-open animate hamburger into X */
+    header.nav-open .nav-toggle .bar:nth-child(1) {
+        transform: translateY(6px) rotate(45deg);
+    }
+
+    header.nav-open .nav-toggle .bar:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+    }
+
+    header.nav-open .nav-toggle .bar:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+    }
+}
+
+/* ensure on >1024 nav is always visible (desktop layout) */
+@media (min-width: 1025px) {
+    nav {
+        max-height: none !important;
+        opacity: 1 !important;
+        display: block;
+    }
+
+    .nav-toggle {
+        display: none !important;
     }
 }

@@ -2,34 +2,52 @@
 <html lang="vi">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>ANN OFFICE - Giải pháp Văn phòng & Kế toán toàn diện</title>
+
+    <!-- main style -->
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- includes loader (inject header/footer) -->
     <script src="assets/js/includes-loader.js" defer></script>
+
+    <!-- main interactivity (navbar + slideshow + accessibility) -->
+    <script src="assets/js/main.js" defer></script>
 </head>
 
-<div class="cta-buttons">
-    <a href="tel:+84934547368" class="cta-btn call-btn" aria-label="Gọi ngay">
-        📞 <span class="phone-text">0934 547 368</span>
-    </a>
-</div>
-
 <body>
-    <!-- Header -->
+    <!-- CTA floating (gọi + zalo) -->
+    <div class="cta-buttons" aria-hidden="false">
+        <a href="tel:+84934547368" class="cta-btn call-btn" aria-label="Gọi ngay">
+            📞 <span class="phone-text">0934 547 368</span>
+        </a>
+    </div>
+
+    <!-- header injected from includes/header.html -->
     <div data-include="includes/header.html"></div>
 
-    <!-- Hero -->
-    <section class="hero">
-        <img src="images/hero.jpg" alt="Hero">
+    <!-- HERO: slideshow -->
+    <section class="hero" aria-label="Banner chính">
+        <div class="hero-slideshow" role="region" aria-roledescription="carousel" aria-label="Ảnh banner">
+            <img src="images/image1.jpg" alt="Ann Office banner 1" class="active" loading="lazy">
+            <img src="images/image2.jpg" alt="Ann Office banner 2" loading="lazy">
+            <img src="images/image3.jpg" alt="Ann Office banner 3" loading="lazy">
+        </div>
+
         <div class="hero-text">
             <h1>ANN OFFICE</h1>
-            <p class="slogan">“Giải pháp Văn phòng & Kế toán toàn diện cho Doanh nghiệp”</p>
-            <a href="https://zalo.me/0934547368" class="cta-btn hero-cta" target="_blank" aria-label="Chat Zalo">
-                <span class="cta-icon">📞</span>
-                <span class="cta-text">Liên hệ ngay</span>
+            <p class="slogan">“Giải pháp Văn phòng &amp; Kế toán toàn diện cho Doanh nghiệp”</p>
+
+            <a href="https://zalo.me/0934547368" class="cta-btn hero-cta" target="_blank" rel="noopener"
+                aria-label="Chat Zalo">
+                💬 <span class="cta-text">Liên hệ ngay</span>
             </a>
         </div>
+
+        <div class="hero-indicators" aria-hidden="false"></div>
+        <button class="hero-prev" aria-label="Ảnh trước">‹</button>
+        <button class="hero-next" aria-label="Ảnh sau">›</button>
     </section>
 
     <!-- About -->
