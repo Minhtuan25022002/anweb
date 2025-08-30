@@ -278,10 +278,9 @@ nav ul ul li:not(:has(ul))>a:after {
     width: 100%;
     margin: 0;
     padding: 0;
-    height: 180px;
-    /* bạn muốn nhỏ hơn/nhỏ hơn nữa chỉnh ở đây */
+    height: 800px;
     min-height: 140px;
-    max-height: 420px;
+    max-height: 1000px;
     border-radius: 0;
     overflow: hidden;
     background: #f4f8f6;
@@ -300,11 +299,10 @@ nav ul ul li:not(:has(ul))>a:after {
 
 .hero-text {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 14%;
+    left: 20%;
     transform: translate(-50%, -50%);
     color: #fff;
-    background: rgba(0, 122, 61, 0.62);
     padding: 10px 16px;
     border-radius: 10px;
     text-align: center;
@@ -312,14 +310,18 @@ nav ul ul li:not(:has(ul))>a:after {
 }
 
 .hero-text h1 {
-    font-size: 1.45rem;
+    font-size: 4.45rem;
     margin-bottom: 6px;
     font-weight: 800;
 }
 
 .hero-text .slogan {
-    font-size: .95rem;
+    font-size: 1.20rem;
     font-style: italic;
+}
+
+.hero-cta {
+    max-width: 42%;
 }
 
 /* ===== MAIN SECTIONS ===== */
@@ -471,5 +473,107 @@ footer a {
     }
 }
 
-/* optional debug helper (uncomment while debugging) */
-/* * { outline: 1px dashed rgba(0,0,0,0.05); } */
+.cta-buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 2000;
+}
+
+.cta-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 50px;
+    background: #a5eb88;
+    color: #333;
+    font-size: 22px;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 12px 18px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.cta-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.cta-btn img {
+    width: 28px;
+    height: 28px;
+}
+
+.call-btn {
+    border: 2px solid var(--green);
+    color: var(--green);
+}
+
+.phone-text {
+    font-weight: 700;
+    animation: bounceColor 1.5s infinite;
+}
+
+.zalo-text {
+    font-weight: 600;
+    animation: pulseText 1.8s infinite;
+}
+
+.zalo-btn {
+    border: 2px solid var(--green);
+    color: #0068ff;
+}
+
+.zalo-text {
+    font-weight: 600;
+}
+
+@keyframes bounceColor {
+
+    0%,
+    100% {
+        transform: translateY(0);
+        color: var(--green);
+    }
+
+    50% {
+        transform: translateY(-4px);
+        color: var(--accent);
+    }
+}
+
+@keyframes pulseText {
+
+    0%,
+    100% {
+        transform: scale(1);
+        color: #0068ff;
+    }
+
+    50% {
+        transform: scale(1.08);
+        color: #004bb5;
+        /* xanh đậm hơn */
+    }
+}
+
+@media (max-width: 768px) {
+
+    .phone-text,
+    .zalo-text {
+        display: none;
+    }
+
+    .cta-btn {
+        border-radius: 50%;
+        width: 54px;
+        height: 54px;
+        justify-content: center;
+        padding: 0;
+        font-size: 22px;
+    }
+}
