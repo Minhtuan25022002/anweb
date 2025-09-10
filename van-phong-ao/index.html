@@ -2,15 +2,197 @@
 <html lang="vi">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Văn Phòng Ảo</title>
-    <link rel="stylesheet" href="../includes/header.css">
-    <link rel="stylesheet" href="van-phong-ao.css">
-    <link rel="stylesheet" href="../includes/footer.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Văn Phòng Ảo - Ann Office</title>
+
+  <!-- giữ CSS chung của dự án -->
+  <link rel="stylesheet" href="../../assets/css/style.css">
+
+  <!-- CSS của trang này (file riêng) -->
+  <link rel="stylesheet" href="van-phong-ao.css">
+
+  <!-- includes + main js (nếu có) -->
+  <script src="../../assets/js/includes-loader.js" defer></script>
+  <script src="../../assets/js/main.js" defer></script>
 </head>
 
 <body>
-    <h1>Văn Phòng Ảo</h1>
+  <!-- header injected -->
+  <div data-include="../../includes/header.html"></div>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="vanphongao-wrap">
+
+    <!-- HERO -->
+    <section class="vanphongao-hero" aria-label="Giải pháp Văn phòng ảo">
+      <div class="vanphongao-hero-left">
+        <h1>Giải Pháp Văn Phòng Thông Minh Cho Doanh Nghiệp</h1>
+        <p class="lead">
+          Tiết kiệm chi phí — Không cần thuê văn phòng truyền thống đắt đỏ.
+          Ann Office cung cấp dịch vụ văn phòng ảo chuyên nghiệp, địa chỉ kinh doanh uy tín,
+          đội ngũ lễ tân và tư vấn tận tâm.
+        </p>
+        <p class="muted">
+          Với các gói dịch vụ linh hoạt, chi phí cạnh tranh, Ann Office giúp doanh nghiệp khởi đầu thuận lợi và vận hành hiệu quả.
+        </p>
+
+        <div class="vanphongao-hero-ctas">
+          <a class="vanphongao-btn primary" href="#lien-he">Liên hệ tư vấn</a>
+          <a class="vanphongao-btn ghost" href="../../lien-he.html">Xem gói &amp; giá</a>
+        </div>
+      </div>
+
+      <div class="vanphongao-hero-right" aria-hidden="false">
+        <img src="/images/image1.jpg" alt="Văn phòng ảo Ann Office" />
+      </div>
+    </section>
+
+    <!-- INTRO -->
+    <section class="vanphongao-intro">
+      <h2>Dịch Vụ Cho Thuê Văn Phòng Ảo</h2>
+      <p>
+        Trong bối cảnh kinh tế phát triển, văn phòng ảo là lựa chọn tối ưu cho startup, freelancer và doanh nghiệp nhỏ.
+        Đặc biệt tại Quận 1 (cũ) — vị trí trung tâm giúp nâng tầm thương hiệu và thuận tiện giao dịch.
+      </p>
+    </section>
+
+    <!-- WHAT -->
+    <section class="vanphongao-section">
+      <h3>Văn Phòng Ảo Là Gì?</h3>
+      <p>
+        Văn phòng ảo cung cấp địa chỉ kinh doanh và tiện ích văn phòng mà không cần không gian vật lý cố định.
+        Giải pháp giúp tiết kiệm chi phí, linh hoạt trong vận hành và chuyên nghiệp trong hình ảnh doanh nghiệp.
+      </p>
+    </section>
+
+    <!-- SERVICES (card grid) -->
+    <section class="vanphongao-section">
+      <h3>Các Dịch Vụ Cung Cấp Thường Đi Kèm</h3>
+      <div class="vanphongao-grid">
+        <article class="vanphongao-card">
+          <img src="/images/image2.jpg" alt="Địa chỉ kinh doanh">
+          <h4>Địa Chỉ Kinh Doanh</h4>
+          <p>Đăng ký địa chỉ để xin giấy phép, nhận thư tín và tạo dấu ấn thương hiệu.</p>
+        </article>
+
+        <article class="vanphongao-card">
+          <img src="/images/image3.jpg" alt="Tiếp nhận thư tín">
+          <h4>Tiếp Nhận Thư Tín</h4>
+          <p>Dịch vụ nhận, lưu trữ và chuyển tiếp thư từ, bưu kiện nhanh chóng.</p>
+        </article>
+
+        <article class="vanphongao-card">
+          <img src="/images/image4.jpg" alt="Phòng họp">
+          <h4>Phòng Họp</h4>
+          <p>Không gian phòng họp chuyên nghiệp, đặt lịch theo giờ khi cần gặp khách hàng.</p>
+        </article>
+
+        <article class="vanphongao-card">
+          <img src="/images/image5.jpg" alt="Lễ tân">
+          <h4>Dịch Vụ Lễ Tân</h4>
+          <p>Lễ tân chuyên nghiệp đón tiếp khách, quản lý cuộc gọi và lịch hẹn.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- WHO -->
+    <section class="vanphongao-section vanphongao-two-col">
+      <div>
+        <h3>Ai Nên Sử Dụng Văn Phòng Ảo?</h3>
+        <ul class="vanphongao-list-check">
+          <li>Startup: tiết kiệm chi phí khi bắt đầu</li>
+          <li>Doanh nghiệp nhỏ: tối ưu nguồn lực vận hành</li>
+          <li>Freelancer: cần địa chỉ uy tín để đăng ký kinh doanh</li>
+        </ul>
+      </div>
+
+      <div>
+        <img class="feature-image" src="/images/image6.jpg" alt="Ai nên dùng văn phòng ảo">
+      </div>
+    </section>
+
+    <!-- BENEFITS -->
+    <section class="vanphongao-section">
+      <h3>Lợi Ích Của Văn Phòng Ảo</h3>
+      <div class="vanphongao-grid">
+        <div class="vanphongao-benefit">
+          <strong>Địa chỉ uy tín</strong>
+          <p>Vị trí trung tâm nâng tầm thương hiệu, thuận tiện giao dịch.</p>
+        </div>
+        <div class="vanphongao-benefit">
+          <strong>Tiết kiệm chi phí</strong>
+          <p>Chi phí thấp hơn nhiều so với thuê văn phòng truyền thống.</p>
+        </div>
+        <div class="vanphongao-benefit">
+          <strong>Linh hoạt</strong>
+          <p>Làm việc từ xa, sử dụng dịch vụ theo nhu cầu.</p>
+        </div>
+        <div class="vanphongao-benefit">
+          <strong>Hệ thống hỗ trợ</strong>
+          <p>Lễ tân, phòng họp, thiết bị văn phòng &amp; hỗ trợ pháp lý.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="vanphongao-cta" id="lien-he" aria-label="Khởi nghiệp thông minh">
+      <div class="vanphongao-cta-inner">
+        <h2>✨ Khởi nghiệp thông minh — Chọn ngay Văn phòng ảo tại Ann Office! ✨</h2>
+        <p class="vanphongao-sub">Giải pháp chính là Văn phòng ảo Ann Office — vừa tiết kiệm, vừa chuyên nghiệp.</p>
+
+        <ul class="vanphongao-cta-features">
+          <li>Địa chỉ kinh doanh đắc địa – nâng tầm uy tín thương hiệu</li>
+          <li>Lễ tân chuyên nghiệp – tiếp khách &amp; nhận thư từ</li>
+          <li>Phòng họp sang trọng – sẵn sàng khi bạn cần</li>
+          <li>Chi phí chỉ bằng 1/10 văn phòng truyền thống</li>
+          <li>Hỗ trợ pháp lý trọn gói – nhanh chóng, chuẩn xác</li>
+        </ul>
+
+        <p class="vanphongao-sub small">Dù bạn là Startup, Freelancer hay Doanh nghiệp SME, Ann Office giúp bạn xây dựng hình ảnh đẳng cấp và mở rộng linh hoạt.</p>
+
+        <div class="vanphongao-cta-actions">
+          <a class="vanphongao-btn primary" href="../../lien-he.html">🚀 Bắt đầu – Liên hệ tư vấn</a>
+          <a class="vanphongao-btn ghost" href="#vanphongao-section-pricing">Xem gói dịch vụ</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- REASONS -->
+    <section class="vanphongao-section">
+      <h3>Lý Do Chọn Ann Office</h3>
+      <div class="vanphongao-grid">
+        <article class="vanphongao-card small">
+          <h4>Tiết kiệm chi phí tối đa</h4>
+          <p>Không cần thuê mặt bằng hay đầu tư nội thất, điện nước.</p>
+        </article>
+        <article class="vanphongao-card small">
+          <h4>Địa chỉ đắc địa</h4>
+          <p>Văn phòng tại trung tâm, thuận tiện đăng ký và giao dịch.</p>
+        </article>
+        <article class="vanphongao-card small">
+          <h4>Dịch vụ chuyên nghiệp</h4>
+          <p>Lễ tân, chuyển phát thư từ, phòng họp sang trọng.</p>
+        </article>
+        <article class="vanphongao-card small">
+          <h4>Hỗ trợ pháp lý</h4>
+          <p>Đăng ký kinh doanh, thay đổi giấy phép, chữ ký số.</p>
+        </article>
+        <article class="vanphongao-card small">
+          <h4>Linh hoạt</h4>
+          <p>Phù hợp startup, freelancer và SMEs mở rộng chi nhánh.</p>
+        </article>
+        <article class="vanphongao-card small">
+          <h4>Hình ảnh chuyên nghiệp</h4>
+          <p>Địa chỉ sang trọng, hotline riêng, nâng tầm tin cậy với khách hàng.</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- footer injected -->
+  <div data-include="../../includes/footer.html"></div>
 </body>
 
 </html>
