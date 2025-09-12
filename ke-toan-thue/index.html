@@ -1,16 +1,233 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Kế Toán Thuế</title>
-    <link rel="stylesheet" href="../includes/header.css">
-    <link rel="stylesheet" href="ke-toan-thue.css">
-    <link rel="stylesheet" href="../includes/footer.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kế Toán - Thuế | Ann Office</title>
+
+  <!-- global site stylesheet (keep) -->
+  <link rel="stylesheet" href="../../assets/css/style.css">
+
+  <!-- page stylesheet -->
+  <link rel="stylesheet" href="ke-toan-thue.css">
+
+  <script src="../../assets/js/includes-loader.js" defer></script>
 </head>
-
 <body>
-    <h1>Kế Toán Thuế</h1>
-</body>
 
+    <div class="cta-buttons" aria-hidden="false">
+        <a href="tel:+84934547368" class="cta-btn call-btn" aria-label="Gọi ngay">
+            📞 <span class="phone-text">0934 547 368</span>
+        </a>
+    </div>
+
+  <!-- header (include như hiện tại) -->
+  <div data-include="../../includes/header.html"></div>
+
+  <!-- HERO -->
+  <header class="ketoan-hero" role="banner" aria-label="Kế toán thuế Ann Office">
+    <div class="ketoan-hero__bg">
+      <img src="../../images/image2.jpg" alt="Văn phòng Ann Office - Kế toán" loading="lazy">
+    </div>
+
+    <!-- subtle decorative shapes -->
+    <svg class="ketoan-hero__shape" aria-hidden="true" viewBox="0 0 600 200" preserveAspectRatio="none">
+      <path d="M0,100 C150,200 450,0 600,100 L600,200 L0,200 Z"></path>
+    </svg>
+
+    <div class="ketoan-hero__overlay" aria-hidden="true"></div>
+
+    <div class="ketoan-hero__content">
+      <h1 class="ketoan-hero__title">Dịch Vụ Kế Toán Trọn Gói – Ann Office</h1>
+      <p class="ketoan-hero__lead">15+ năm kinh nghiệm — Hơn 3.000 doanh nghiệp tin tưởng</p>
+      <div class="ketoan-hero__actions">
+        <a class="ketoan-btn ketoan-btn--primary" href="tel:+84934547368">📞 Liên hệ tư vấn: 0934 547 368</a>
+        <a class="ketoan-btn ketoan-btn--ghost" href="#ketoan-services">Xem dịch vụ</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main id="maincontent" class="ketoan-main">
+
+    <!-- Intro (Why) -->
+    <section class="ketoan-intro ketoan-anim" id="ketoan-intro">
+      <div class="ketoan-intro__text">
+        <h2>Vì sao kế toán – thuế quan trọng với doanh nghiệp?</h2>
+        <p>
+          Trong thị trường cạnh tranh, quản lý sổ sách và báo cáo thuế không chỉ là nghĩa vụ pháp lý
+          mà còn giúp doanh nghiệp minh bạch, tiết kiệm chi phí và ra quyết định đúng đắn. Ann Office
+          giúp bạn tập trung kinh doanh — còn phần kế toán, thuế, bảo hiểm, thủ tục pháp lý chúng tôi lo.
+        </p>
+        <ul class="ketoan-intro__bullets">
+          <li>Chỉ từ <strong>499.000đ/tháng</strong> có kế toán viên phụ trách.</li>
+          <li>Hơn <strong>3.000</strong> doanh nghiệp tin dùng — cam kết an toàn pháp lý.</li>
+        </ul>
+      </div>
+
+      <div class="ketoan-intro__visual">
+        <img src="../../images/image1.jpg" alt="Kế toán viên Ann Office làm việc" loading="lazy">
+      </div>
+    </section>
+
+    <!-- What we do -->
+    <section class="ketoan-services ketoan-anim" id="ketoan-services">
+      <h2 class="ketoan-section__title">Ann Office sẽ thay bạn thực hiện</h2>
+
+      <div class="ketoan-services__grid">
+        <article class="ketoan-service-card">
+          <img src="../../images/image2.jpg" alt="Tư vấn hóa đơn" loading="lazy">
+          <h3>Tư vấn hóa đơn & kiểm soát thuế</h3>
+          <p>Kiểm soát đầu vào - đầu ra hợp lý, tối ưu chi phí thuế và hướng dẫn sử dụng hóa đơn.</p>
+        </article>
+
+        <article class="ketoan-service-card">
+          <img src="../../images/image4.jpg" alt="Xử lý chứng từ" loading="lazy">
+          <h3>Tiếp nhận & xử lý chứng từ</h3>
+          <p>Nhân sự đến tận nơi nhận chứng từ, phân loại và nhập liệu chính xác, tiết kiệm thời gian.</p>
+        </article>
+
+        <article class="ketoan-service-card">
+          <img src="../../images/image5.jpg" alt="Báo cáo thuế" loading="lazy">
+          <h3>Lập & nộp báo cáo thuế</h3>
+          <p>Gồm GTGT, TNCN, TNDN tạm tính và báo cáo định kỳ — đúng thời hạn, đúng quy định.</p>
+        </article>
+
+        <article class="ketoan-service-card">
+          <img src="../../images/image6.jpg" alt="Báo cáo tài chính" loading="lazy">
+          <h3>Báo cáo tài chính cuối năm</h3>
+          <p>Lập báo cáo tài chính đầy đủ, chính xác, phục vụ quyết toán và kiểm toán.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Internal accounting package -->
+    <section class="ketoan-package ketoan-anim" id="ketoan-package">
+      <div class="ketoan-package__content">
+        <h2>Gói Kế Toán Nội Bộ — Tối ưu quản trị từ 1.000.000đ</h2>
+        <p>Giải pháp toàn diện: tiền lương, bán hàng, kho, công nợ — giúp doanh nghiệp kiểm soát tài chính chặt chẽ.</p>
+
+        <ul class="ketoan-package__list">
+          <li><strong>Kế toán tiền lương:</strong> Xây dựng chính sách lương, đăng ký BHXH, xử lý lương.</li>
+          <li><strong>Kế toán bán hàng:</strong> Quản lý hóa đơn, quỹ, doanh thu.</li>
+          <li><strong>Kế toán kho:</strong> Nhập-xuất-tồn, xử lý tồn kho ảo.</li>
+          <li><strong>Kế toán công nợ:</strong> Theo dõi & thu nợ, quản lý thanh toán.</li>
+        </ul>
+      </div>
+
+      <div class="ketoan-package__gallery">
+        <img src="../../images/image7.jpg" alt="Kế toán tiền lương" loading="lazy">
+        <img src="../../images/image9.jpg" alt="Kế toán kho" loading="lazy">
+        <img src="../../images/image6.jpg" alt="Kế toán tiền lương" loading="lazy">
+        <img src="../../images/image5.jpg" alt="Kế toán kho" loading="lazy">
+      </div>
+    </section>
+
+    <!-- Commitments -->
+    <section class="ketoan-commit ketoan-anim" id="ketoan-commit">
+      <h2 class="ketoan-section__title">Cam kết của Ann Office</h2>
+
+      <div class="ketoan-commit__grid">
+        <div class="ketoan-commit__item">
+          <h4>Đúng tiến độ</h4>
+          <p>Thực hiện đầy đủ và kịp thời các công việc đã cam kết.</p>
+        </div>
+
+        <div class="ketoan-commit__item">
+          <h4>Chịu trách nhiệm pháp lý</h4>
+          <p>Đại diện giải trình và làm việc với cơ quan khi có phát sinh.</p>
+        </div>
+
+        <div class="ketoan-commit__item">
+          <h4>Bảo mật</h4>
+          <p>Mọi thông tin tài chính được bảo mật chặt chẽ ngay cả khi kết thúc hợp đồng.</p>
+        </div>
+
+        <div class="ketoan-commit__item">
+          <h4>Đền bù nếu sai sót</h4>
+          <p>Chịu trách nhiệm tài chính với các phạt phát sinh do lỗi của Ann Office.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why choose -->
+    <section class="ketoan-why ketoan-anim" id="ketoan-why">
+      <h2 class="ketoan-section__title">Lý do doanh nghiệp chọn Ann Office</h2>
+      <div class="ketoan-why__wrap">
+        <div class="ketoan-why__left">
+          <ul>
+            <li><strong>Chi phí hợp lý:</strong> Gói trọn gói rõ ràng, ít phát sinh.</li>
+            <li><strong>Tốc độ xử lý:</strong> Báo cáo kịp thời, hạn chế rủi ro nộp muộn.</li>
+            <li><strong>Dịch vụ đa dạng:</strong> Từ kê khai thuế đến tư vấn pháp lý.</li>
+          </ul>
+        </div>
+        <div class="ketoan-why__right">
+          <img src="../../images/image3.jpg" alt="Đội ngũ Ann Office" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Other services -->
+    <section class="ketoan-other ketoan-anim" id="ketoan-other">
+      <h2 class="ketoan-section__title">Các dịch vụ nổi bật khác</h2>
+      <div class="ketoan-other__list">
+        <span class="ketoan-pill">Làm sổ sách kế toán</span>
+        <span class="ketoan-pill">Hoàn thuế GTGT</span>
+        <span class="ketoan-pill">Hoàn thuế TNCN</span>
+        <span class="ketoan-pill">Quyết toán thuế cuối năm</span>
+        <span class="ketoan-pill">Lập & nộp BCTC</span>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="ketoan-final-cta ketoan-anim" id="ketoan-contact">
+      <div class="ketoan-final-cta__box">
+        <h3>Chuẩn bị hồ sơ & nhận tư vấn miễn phí</h3>
+        <p>Liên hệ ngay để được tư vấn gói dịch vụ phù hợp và nhận bảng giá chi tiết.</p>
+        <a class="ketoan-btn ketoan-btn--primary ketoan-anim-btn" href="tel:+84934547368">📞 Gọi ngay: 0934 547 368</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- footer (include như hiện tại) -->
+  <div data-include="../../includes/footer.html"></div>
+
+  <!-- small page script: scroll reveal (accessible, reduced-motion safe) -->
+  <script>
+    (function () {
+      // prefer-reduced-motion
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) {
+        document.querySelectorAll('.ketoan-anim').forEach(el => el.style.opacity = 1);
+        document.querySelectorAll('.ketoan-anim-btn').forEach(b => b.style.transform = 'none');
+        return;
+      }
+
+      const els = document.querySelectorAll('.ketoan-anim');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('ketoan-anim--visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.16 });
+
+      els.forEach(el => {
+        el.style.opacity = 0;
+        el.style.transform = 'translateY(18px)';
+        io.observe(el);
+      });
+
+      // small bounce on hero action button after load
+      window.addEventListener('load', () => {
+        const b = document.querySelector('.ketoan-hero__actions .ketoan-btn--primary');
+        if (b) {
+          b.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-6px)' }, { transform: 'translateY(0)' }], { duration: 1200, iterations: 2 });
+        }
+      });
+    })();
+  </script>
+</body>
 </html>

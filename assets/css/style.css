@@ -95,6 +95,7 @@ header .container {
     font-weight: 700;
     color: var(--green);
     letter-spacing: 1px;
+    text-decoration: none;
 }
 
 /* ===== Navigation ===== */
@@ -131,7 +132,6 @@ nav ul {
 nav ul.main-menu {
     display: flex;
     gap: 4px;
-    justify-content: flex-end;
     align-items: center;
     list-style: none;
     padding-left: 0;
