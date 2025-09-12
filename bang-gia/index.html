@@ -1,14 +1,209 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
-    <meta charset="UTF-8">
-    <title>Bảng Giá</title>
-    <link rel="stylesheet" href="bang-gia.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bảng Giá Dịch Vụ | ANN Office</title>
+  <link rel="stylesheet" href="../../assets/css/style.css">
+  <link rel="stylesheet" href="bang-gia.css">
+  <script src="../../assets/js/includes-loader.js" defer></script>
 </head>
-
 <body>
-    <h1>Bảng Giá</h1>
-</body>
 
+  <!-- HEADER cũ -->
+  <div data-include="../../includes/header.html"></div>
+
+  <!-- HERO -->
+  <header class="banggia-hero" role="banner" aria-label="Bảng giá ANN Office">
+    <div class="banggia-hero__bg"><img src="../../images/image1.jpg" alt="Bảng giá ANN Office" loading="lazy"></div>
+    <div class="banggia-hero__overlay" aria-hidden="true"></div>
+    <div class="banggia-hero__content">
+      <p class="banggia-hero__eyebrow">BẢNG GIÁ</p>
+      <h1 class="banggia-hero__title">Bảng Giá Dịch Vụ ANN Office</h1>
+      <p class="banggia-hero__lead">Giá hiển thị <strong>chưa VAT</strong>. Chọn gói phù hợp — minh bạch, dễ hiểu.</p>
+
+      <!-- VAT toggle + quick CTAs -->
+      <div class="banggia-hero__controls">
+        <label class="banggia-switch">
+          <input id="vatToggle" type="checkbox" aria-label="Bật VAT (10%)">
+          <span class="banggia-switch__track"></span>
+          <span class="banggia-switch__label">Hiển thị giá đã gồm VAT</span>
+        </label>
+        <div class="banggia-hero__actions">
+          <a class="banggia-btn banggia-btn--primary" href="tel:+84934547368">📞 Gọi ngay</a>
+          <a class="banggia-btn banggia-btn--ghost" href="#banggia-ketoan">Xem Kế toán</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="banggia-main">
+
+    <!-- 1. Văn phòng ảo -->
+    <section id="banggia-vanphongao" class="banggia-section banggia-visible-onload">
+      <div class="banggia-section__inner">
+        <div class="banggia-section__media">
+          <img src="../../images/image11.jpg" alt="Văn phòng ảo ANN Office" loading="lazy">
+        </div>
+        <div class="banggia-section__content">
+          <h2 class="banggia-section__title">1. Văn Phòng Ảo</h2>
+          <p class="banggia-note">Giá <strong>chưa gồm VAT</strong>.</p>
+
+          <div class="banggia-cards" role="list">
+            <article class="banggia-card banggia-card--featured" role="listitem" data-base-price="499000">
+              <div class="banggia-card__head">
+                <h3>Gói Cơ Bản</h3>
+                <div class="banggia-price"><span class="banggia-price__value">499.000</span><span class="banggia-currency">đ/tháng</span></div>
+              </div>
+              <ul class="banggia-card__list">
+                <li>Địa chỉ đăng ký kinh doanh</li>
+                <li>Nhận thư & chuyển tiếp</li>
+                <li>Hỗ trợ khai báo ban đầu</li>
+              </ul>
+              <a class="banggia-cta" href="tel:+84934547368">Liên hệ</a>
+            </article>
+
+            <article class="banggia-card" role="listitem" data-base-price="899000">
+              <div class="banggia-card__head">
+                <h3>Gói Chuyên Nghiệp</h3>
+                <div class="banggia-price"><span class="banggia-price__value">899.000</span><span class="banggia-currency">đ/tháng</span></div>
+              </div>
+              <ul class="banggia-card__list">
+                <li>Địa chỉ + scan thư</li>
+                <li>Ưu đãi phòng họp</li>
+                <li>Hỗ trợ hành chính</li>
+              </ul>
+              <a class="banggia-cta" href="tel:+84934547368">Liên hệ</a>
+            </article>
+
+            <article class="banggia-card" role="listitem" data-base-price="1499000">
+              <div class="banggia-card__head">
+                <h3>Gói Doanh Nghiệp</h3>
+                <div class="banggia-price"><span class="banggia-price__value">1.499.000</span><span class="banggia-currency">đ/tháng</span></div>
+              </div>
+              <ul class="banggia-card__list">
+                <li>Tiếp tân chuyên nghiệp</li>
+                <li>Quản lý hồ sơ & chuyển phát</li>
+                <li>Ưu đãi pháp lý & kế toán</li>
+              </ul>
+              <a class="banggia-cta" href="tel:+84934547368">Liên hệ</a>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Văn phòng chia sẻ -->
+    <section id="banggia-choshare" class="banggia-section banggia-section--light">
+      <div class="banggia-section__inner reverse">
+        <div class="banggia-section__content">
+          <h2 class="banggia-section__title">2. Văn Phòng Chia Sẻ</h2>
+          <p class="banggia-note">Giá chưa gồm VAT — linh hoạt theo nhu cầu.</p>
+
+          <ul class="banggia-list">
+            <li><strong>Chỗ Ngồi Vãng Lai:</strong> <span class="banggia-amount" data-base="250000">250.000 đ/ngày</span></li>
+            <li><strong>Chỗ Ngồi Linh Hoạt:</strong> <span class="banggia-amount" data-base="2500000">2.500.000 đ/tháng</span></li>
+            <li><strong>Chỗ Ngồi Cố Định:</strong> <span class="banggia-amount" data-base="3500000">3.500.000 đ/tháng</span></li>
+            <li><strong>Phòng Team (3-6 người):</strong> <span class="banggia-amount" data-base="6000000">Từ 6.000.000 đ/tháng</span></li>
+          </ul>
+
+          <div class="banggia-gallery">
+            <img src="../../images/image12.jpg" alt="Chỗ ngồi vãng lai" loading="lazy">
+            <img src="../../images/image13.jpg" alt="Không gian làm việc" loading="lazy">
+            <img src="../../images/image14.jpg" alt="Phòng họp" loading="lazy">
+          </div>
+        </div>
+
+        <div class="banggia-section__media">
+          <img src="../../images/image12.jpg" alt="Văn phòng chia sẻ" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Kế toán -->
+    <section id="banggia-ketoan" class="banggia-section banggia-section--light">
+      <div class="banggia-section__inner">
+        <div class="banggia-section__media">
+          <img src="../../images/image15.jpg" alt="Dịch vụ kế toán" loading="lazy">
+        </div>
+
+        <div class="banggia-section__content">
+          <h2 class="banggia-section__title">3. Kế Toán</h2>
+          <p class="banggia-note">Bảng giá dịch vụ kế toán thuế tại miền Nam — phí áp dụng theo <strong>quý (3 tháng)</strong>.</p>
+
+          <div class="banggia-ketoan-table" role="table">
+            <table>
+              <thead>
+                <tr><th>Dịch vụ</th><th>Phí (VNĐ)</th><th>Ghi chú</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Dịch vụ kế toán cơ bản</td><td>Liên hệ</td><td>Tuỳ quy mô & nghiệp vụ</td></tr>
+                <tr><td>Lập & nộp báo cáo thuế</td><td>Liên hệ</td><td>Áp dụng theo quý</td></tr>
+                <tr><td>Kế toán nội bộ (gói)</td><td>1.000.000+/tháng</td><td>Gói theo yêu cầu</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="banggia-footnotes">
+            <figure>
+              <img src="../../images/image15.jpg" alt="Ghi chú" loading="lazy">
+              <figcaption>(*) Phí áp dụng cho quý - 3 tháng.</figcaption>
+            </figure>
+            <figure>
+              <img src="../../images/image16.jpg" alt="Ghi chú 2" loading="lazy">
+              <figcaption>(*) Phí áp dụng cho quý - 3 tháng.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- final CTA -->
+    <section class="banggia-cta">
+      <div class="banggia-cta__inner">
+        <h3>Cần tư vấn & báo giá chi tiết?</h3>
+        <p>Chúng tôi sẽ gửi báo giá phù hợp theo quy mô và yêu cầu doanh nghiệp.</p>
+        <a class="banggia-btn banggia-btn--primary" href="tel:+84934547368">📞 Gọi ngay: 0934 547 368</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER cũ -->
+  <div data-include="../../includes/footer.html"></div>
+
+  <!-- JS VAT toggle + reveal sections -->
+  <script>
+    (function(){
+      const fmt = n => isNaN(n)?n:new Intl.NumberFormat('vi-VN').format(Math.round(n));
+      const vatToggle = document.getElementById('vatToggle');
+      const applyVAT = showVAT => {
+        document.querySelectorAll('.banggia-card').forEach(card=>{
+          const base = parseFloat(card.dataset.basePrice);
+          if (!base) return;
+          card.querySelector('.banggia-price__value').textContent = showVAT?fmt(Math.round(base*1.1)):fmt(base);
+        });
+        document.querySelectorAll('.banggia-amount').forEach(el=>{
+          const base = Number(el.dataset.base);
+          if (!base) return;
+          el.textContent = showVAT?fmt(Math.round(base*1.1))+' đ':fmt(base)+' đ';
+        });
+      };
+      if(vatToggle) vatToggle.addEventListener('change',e=>applyVAT(e.target.checked));
+
+      if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+        const io = new IntersectionObserver((entries, obs)=>{
+          entries.forEach(ent=>{
+            if(ent.isIntersecting){ent.target.classList.add('banggia-visible'); obs.unobserve(ent.target);}
+          });
+        },{threshold:0.12});
+        document.querySelectorAll('.banggia-section').forEach(s=>{s.style.opacity=0;s.style.transform='translateY(16px)';io.observe(s);});
+        document.querySelector('.banggia-hero__content').style.opacity=1;
+        document.querySelector('.banggia-hero__content').style.transform='none';
+      }else document.querySelectorAll('.banggia-section').forEach(s=>s.style.opacity=1);
+    })();
+  </script>
+
+</body>
 </html>
