@@ -1,72 +1,5 @@
 (function () {
-    function waitFor(selector, timeout = 4000) {
-        return new Promise((resolve, reject) => {
-            const el = document.querySelector(selector);
-            if (el) return resolve(el);
-            const interval = 50;
-            let waited = 0;
-            const t = setInterval(() => {
-                const e = document.querySelector(selector);
-                if (e) { clearInterval(t); resolve(e); }
-                else { waited += interval; if (waited >= timeout) { clearInterval(t); reject(); } }
-            }, interval);
-        });
-    }
-
-    function initNav() {
-        const nav = document.querySelector('nav');
-        if (!nav) return;
-        const mq = window.matchMedia('(max-width: 768px)');
-
-        nav.querySelectorAll('ul.main-menu li').forEach(li => {
-            const sub = li.querySelector(':scope > ul');
-            if (sub) {
-                li.classList.add('has-sub');
-                const a = li.querySelector(':scope > a');
-                if (a) {
-                    a.setAttribute('aria-haspopup', 'true');
-                    a.setAttribute('aria-expanded', 'false');
-
-                    // remove duplicates if included
-                    a.addEventListener('click', function (e) {
-                        if (e.ctrlKey || e.metaKey || e.shiftKey) return;
-                        if (!mq.matches) return;
-                        e.preventDefault();
-                        const isOpen = li.classList.toggle('open');
-                        a.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-                    });
-
-                    a.addEventListener('keydown', function (e) {
-                        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
-                            e.preventDefault();
-                            a.click();
-                        }
-                    });
-                }
-            }
-        });
-
-        window.addEventListener('resize', () => {
-            if (!mq.matches) {
-                nav.querySelectorAll('ul.main-menu li.open').forEach(li => {
-                    li.classList.remove('open');
-                    const a = li.querySelector(':scope > a');
-                    if (a) a.setAttribute('aria-expanded', 'false');
-                });
-            }
-        });
-
-        document.addEventListener('click', (ev) => {
-            if (!nav.contains(ev.target)) {
-                nav.querySelectorAll('ul.main-menu li.open').forEach(li => {
-                    li.classList.remove('open');
-                    const a = li.querySelector(':scope > a');
-                    if (a) a.setAttribute('aria-expanded', 'false');
-                });
-            }
-        });
-    }
-
+    // ========== Slideshow ==========
     function initSlideshow() {
         const slideshow = document.querySelector('.hero-slideshow');
         if (!slideshow) return;
@@ -80,7 +13,7 @@
         let intervalId = null;
         const delay = 5000;
 
-        // create indicators
+        // tạo nút chỉ số
         slides.forEach((_, i) => {
             const btn = document.createElement('button');
             btn.type = 'button';
@@ -118,101 +51,57 @@
         if (prevBtn) prevBtn.addEventListener('click', () => { prev(); restartAuto(); });
 
         const hero = document.querySelector('.hero');
-        hero.addEventListener('mouseenter', stopAuto);
-        hero.addEventListener('mouseleave', startAuto);
-        hero.addEventListener('focusin', stopAuto);
-        hero.addEventListener('focusout', startAuto);
+        if (hero) {
+            hero.addEventListener('mouseenter', stopAuto);
+            hero.addEventListener('mouseleave', startAuto);
+            hero.addEventListener('focusin', stopAuto);
+            hero.addEventListener('focusout', startAuto);
+        }
 
         show(0);
         if (slides.length > 1) startAuto();
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-        // wait for nav (header may be injected)
-        waitFor('nav', 4000).then(() => {
-            try { initNav(); } catch (e) { console.warn('initNav error', e); }
-            try { initSlideshow(); } catch (e) { console.warn('initSlideshow error', e); }
-        }).catch(() => {
-            // fallback init
-            try { initNav(); } catch (e) { }
-            try { initSlideshow(); } catch (e) { }
+    // ========== Header Mobile Menu ==========
+    function initHeader(header) {
+        console.log("✅ Header init");
+
+        const toggleBtn = header.querySelector(".nav-toggle");
+        const menu = header.querySelector(".main-menu");
+
+        if (!toggleBtn || !menu) {
+            console.warn("⚠️ Không tìm thấy nút toggle hoặc menu");
+            return;
+        }
+
+        // Toggle main menu
+        toggleBtn.addEventListener("click", () => {
+            const isOpen = header.classList.toggle("nav-open");
+            toggleBtn.setAttribute("aria-expanded", isOpen);
+            console.log("👉 Toggle menu:", isOpen);
         });
-    });
-})();
 
-// Responsive hamburger + submenu toggle (works if inserted into main.js)
-document.addEventListener('DOMContentLoaded', function () {
-    const header = document.querySelector('header');
-    const container = header ? header.querySelector('.container') : null;
-    let toggle = document.querySelector('.nav-toggle');
-    const nav = document.querySelector('header nav');
-
-    if (!header || !nav || !container) return;
-
-    // if nav-toggle missing, create it automatically
-    if (!toggle) {
-        toggle = document.createElement('button');
-        toggle.className = 'nav-toggle';
-        toggle.setAttribute('aria-expanded', 'false');
-        toggle.setAttribute('aria-label', 'Mở menu');
-        toggle.innerHTML = '<span class="sr-only">Mở menu</span><span class="bar"></span><span class="bar"></span><span class="bar"></span>';
-        // append to container (after logo-area if exists)
-        const logo = container.querySelector('.logo-area');
-        if (logo && logo.nextSibling) container.insertBefore(toggle, logo.nextSibling);
-        else container.appendChild(toggle);
+        // Accordion submenu
+        header.querySelectorAll(".main-menu .has-children > a").forEach(link => {
+            link.addEventListener("click", (e) => {
+                if (window.innerWidth <= 1024) {
+                    e.preventDefault();
+                    link.parentElement.classList.toggle("open");
+                    console.log("👉 Toggle submenu:", link.textContent.trim());
+                }
+            });
+        });
     }
 
-    // toggle main nav
-    toggle.addEventListener('click', function (e) {
-        const opened = header.classList.toggle('nav-open');
-        toggle.setAttribute('aria-expanded', opened ? 'true' : 'false');
-        // optional: collapse any opened submenus when closing main nav
-        if (!opened) {
-            document.querySelectorAll('nav ul.main-menu li.open').forEach(li => li.classList.remove('open'));
+    // ========== Bắt sự kiện ==========
+    document.addEventListener("DOMContentLoaded", () => {
+        try { initSlideshow(); } catch (e) { console.warn("initSlideshow error", e); }
+    });
+
+    document.addEventListener("headerLoaded", () => {
+        const header = document.querySelector("header");
+        if (header) {
+            try { initHeader(header); } catch (e) { console.warn("initHeader error", e); }
         }
     });
-
-    // prepare submenu toggles for top-level li
-    document.querySelectorAll('nav ul.main-menu > li').forEach(function (li) {
-        const sub = li.querySelector('ul');
-        if (sub) {
-            li.classList.add('has-children');
-            const parentA = li.querySelector('a');
-
-            parentA.addEventListener('click', function (ev) {
-                // intercept on small screens to toggle submenu
-                if (window.innerWidth <= 1024) {
-                    ev.preventDefault();      // first tap opens submenu
-                    li.classList.toggle('open');
-                }
-                // on desktop, allow normal navigation
-            });
-        }
-    });
-
-    // close menu if click outside (mobile)
-    document.addEventListener('click', function (e) {
-        if (window.innerWidth <= 1024 && header.classList.contains('nav-open')) {
-            if (!e.target.closest('header')) {
-                header.classList.remove('nav-open');
-                toggle.setAttribute('aria-expanded', 'false');
-                document.querySelectorAll('nav ul.main-menu li.open').forEach(li => li.classList.remove('open'));
-            }
-        }
-    });
-
-    // reset states on resize (desktop)
-    let resizeTimer;
-    window.addEventListener('resize', function () {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function () {
-            if (window.innerWidth > 1024) {
-                header.classList.remove('nav-open');
-                toggle.setAttribute('aria-expanded', 'false');
-                document.querySelectorAll('nav ul.main-menu li.open').forEach(li => li.classList.remove('open'));
-                nav.style.maxHeight = null;
-            }
-        }, 120);
-    });
-});
-
+})();

@@ -114,6 +114,15 @@ body {
     line-height: 1.7;
 }
 
+@media (max-width: 1024px) {
+    .change-license-main {
+        padding: 18px 2vw 18px 2vw;
+    }
+    .thaydoi-hero {
+        height: 32vh;
+    }
+}
+
 @media (max-width: 900px) {
     .change-license-hero {
         flex-direction: column;
@@ -124,15 +133,133 @@ body {
         margin-bottom: 18px;
     }
     .change-license-main {
-        padding: 18px 6vw 18px 6vw;
+        padding: 18px 4vw 18px 4vw;
     }
     .commitment-block {
         flex-direction: column;
-        padding: 16px 6vw;
+        padding: 16px 4vw;
     }
     .commitment-img {
         margin-right: 0;
         margin-bottom: 14px;
+    }
+    .thaydoi-hero {
+        height: 28vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .change-license-main {
+        padding: 12px 2vw 12px 2vw;
+    }
+    .change-license-hero h1 {
+        font-size: 1.5rem;
+    }
+    .change-license-hero .subtitle {
+        font-size: 1rem;
+    }
+    .commitment-block {
+        padding: 12px 2vw;
+    }
+    .thaydoi-hero {
+        height: 22vh;
+    }
+    .thaydoi-hero h1 {
+        font-size: 1.3rem;
+    }
+    .thaydoi-hero .subtitle {
+        font-size: 0.95rem;
+        padding: 4px 8px;
+    }
+}
+
+@media (max-width: 600px) {
+    .change-license-main {
+        padding: 8px 1vw 8px 1vw;
+    }
+    .change-license-hero {
+        padding: 12px 0 4px 0;
+    }
+    .change-license-hero h1 {
+        font-size: 1.1rem;
+    }
+    .change-license-hero .subtitle {
+        font-size: 0.9rem;
+    }
+    .commitment-block {
+        padding: 8px 1vw;
+    }
+    .commitment-img {
+        max-width: 120px;
+    }
+    .thaydoi-hero {
+        height: 16vh;
+        border-radius: 0 0 18px 18px;
+    }
+    .thaydoi-hero h1 {
+        font-size: 1.1rem;
+    }
+    .thaydoi-hero .subtitle {
+        font-size: 0.8rem;
+        padding: 2px 4px;
+    }
+    .service-list li {
+        font-size: 0.98rem;
+        padding-left: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 15px;
+    }
+    .change-license-main {
+        padding: 4px 0 4px 0;
+        border-radius: 8px;
+    }
+    .change-license-hero {
+        padding: 8px 0 2px 0;
+        border-radius: 0 0 12px 12px;
+    }
+    .change-license-hero .hero-img {
+        max-width: 90vw;
+    }
+    .commitment-block {
+        padding: 4px 0;
+        border-radius: 8px;
+    }
+    .commitment-img {
+        max-width: 90vw;
+    }
+    .thaydoi-hero {
+        height: 120px;
+        border-radius: 0 0 10px 10px;
+    }
+    .thaydoi-hero .hero-bg img {
+        object-position: center top;
+    }
+    .thaydoi-hero h1 {
+        font-size: 1rem;
+        margin-bottom: 6px;
+    }
+    .thaydoi-hero .subtitle {
+        font-size: 0.7rem;
+        padding: 1px 2px;
+    }
+    .service-list li {
+        font-size: 0.93rem;
+        padding-left: 18px;
+    }
+    .cta-buttons {
+        right: 8px !important;
+        left: 8px !important;
+        bottom: 12px !important;
+        width: auto !important;
+        max-width: 98vw;
+    }
+    .cta-btn {
+        font-size: 1rem !important;
+        padding: 8px 12px !important;
     }
 }
 
