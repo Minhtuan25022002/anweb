@@ -276,7 +276,7 @@ body {
 }
 
 /* chữ nổi lên */
-.thaydoi-hero .hero-text {
+.thaydoi-hero .thaydoi-hero-text {
   position: relative;
   z-index: 1;
   text-align: center;

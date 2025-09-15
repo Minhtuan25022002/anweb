@@ -32,7 +32,7 @@ body {
 }
 
 /* chữ nổi lên */
-.vanphong-hero .hero-text {
+.vanphong-hero .vanphong-hero-text {
   position: relative;
   z-index: 1;
   text-align: center;
