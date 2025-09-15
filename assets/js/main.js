@@ -81,15 +81,56 @@
             console.log("👉 Toggle menu:", isOpen);
         });
 
-        // Accordion submenu
-        header.querySelectorAll(".main-menu .has-children > a").forEach(link => {
-            link.addEventListener("click", (e) => {
+        // Kế Toán – Thuế: chỉ bấm vào .submenu-arrow mới mở submenu, bấm vào a thì tắt menu
+        const ketoanMenu = header.querySelector('.main-menu > li.has-children:nth-child(4)');
+        if (ketoanMenu) {
+            const ketoanLink = ketoanMenu.querySelector('a');
+            const ketoanArrow = ketoanMenu.querySelector('.submenu-arrow');
+            if (ketoanArrow) {
+                ketoanArrow.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    ketoanMenu.classList.toggle('open');
+                });
+            }
+            if (ketoanLink) {
+                ketoanLink.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 1024) {
+                        header.classList.remove('nav-open');
+                        document.body.classList.remove('menu-overlay');
+                        // Đóng tất cả submenu khi tắt menu
+                        header.querySelectorAll('.main-menu li.has-children.open').forEach(li => li.classList.remove('open'));
+                    }
+                });
+            }
+            ketoanMenu.querySelectorAll('ul a').forEach(childLink => {
+                childLink.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 1024) {
+                        header.classList.remove('nav-open');
+                        document.body.classList.remove('menu-overlay');
+                        header.querySelectorAll('.main-menu li.has-children.open').forEach(li => li.classList.remove('open'));
+                    }
+                });
+            });
+        }
+
+        // Doanh Nghiệp: bấm vào chữ sẽ mở/đóng submenu như cũ
+        const doanhnghiepMenu = header.querySelector('.main-menu > li.has-children');
+        if (doanhnghiepMenu && !doanhnghiepMenu.querySelector('.submenu-arrow')) {
+            const doanhnghiepLink = doanhnghiepMenu.querySelector('a');
+            doanhnghiepLink.addEventListener('click', function(e) {
                 if (window.innerWidth <= 1024) {
                     e.preventDefault();
-                    link.parentElement.classList.toggle("open");
-                    console.log("👉 Toggle submenu:", link.textContent.trim());
+                    doanhnghiepMenu.classList.toggle('open');
                 }
             });
+        }
+
+        // Khi bấm nút 3 gạch để tắt menu, remove hết class open khỏi submenu
+        toggleBtn.addEventListener('click', function() {
+            if (!header.classList.contains('nav-open')) {
+                // menu vừa bị đóng
+                header.querySelectorAll('.main-menu li.has-children.open').forEach(li => li.classList.remove('open'));
+            }
         });
     }
 

@@ -38,6 +38,12 @@
         position: relative;
         z-index: 1000;
       } */
+             .menu-flex-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+      }
       .container {
         display: flex;
         align-items: center;
@@ -173,11 +179,37 @@
         font-weight: 600;
       }
       .main-menu li.has-children > a::after {
-        content: '\25BC';
-        margin-left: 8px;
-        font-size: 0.9em;
-        color: #fff;
-        transition: transform 0.2s;
+        /* Ẩn mũi tên mặc định cho mọi menu */
+        content: '';
+        margin-left: 0;
+        font-size: 0;
+        color: transparent;
+        transition: none;
+      }
+      /* Style riêng cho .submenu-arrow của Kế Toán – Thuế */
+      .submenu-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  width: 18px;
+  height: 1em;
+  vertical-align: middle;
+  cursor: pointer;
+  position: static;
+  line-height: 1;
+      }
+      .submenu-arrow::before {
+  content: '\25BC';
+  display: block;
+  color: #fff;
+  font-size: 1em;
+  transition: transform 0.2s;
+  text-align: center;
+  line-height: 1;
+      }
+      .main-menu li.has-children.open > .submenu-arrow::before {
+        transform: rotate(-180deg);
       }
       .main-menu li.has-children.open > a::after {
         transform: rotate(-180deg);
@@ -275,7 +307,7 @@
         <li><a href="/van-phong-ao/">Văn Phòng Ảo</a></li>
         <li><a href="/van-phong-chia-se/">Văn Phòng Chia Sẻ</a></li>
         <li class="has-children">
-          <a href="/ke-toan-thue/">Kế Toán – Thuế</a>
+  <div class="menu-flex-row"><a href="/ke-toan-thue/">Kế Toán – Thuế</a><span class="submenu-arrow" tabindex="0" aria-label="Mở submenu" role="button"></span></div>
           <ul>
               <li><a href="/ke-toan-thue/#ketoan-intro">Kế toán thuế</a></li>
               <li><a href="/ke-toan-thue/#ketoan-package">Kế toán nội bộ</a></li>

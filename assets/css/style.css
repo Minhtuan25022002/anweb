@@ -518,13 +518,13 @@ nav ul ul li:focus-within>ul {
 }
 
 /* arrows */
-nav ul.main-menu>li>a:after {
+/* nav ul.main-menu>li>a:after {
     content: " ▼";
     font-size: .6rem;
     color: #555;
     margin-left: 6px;
     transition: transform .2s;
-}
+} */
 
 nav ul.main-menu>li:hover>a:after {
     transform: rotate(180deg);
