@@ -132,6 +132,18 @@ body {
   align-items: center;
   gap: 8px;
 }
+
+.benefits-list .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+  min-width: 2em;
+  height: 2em;
+  font-size: 1.3em;
+  margin-right: 4px;
+  flex-shrink: 0;
+}
 .benefits-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -202,29 +214,6 @@ body {
   max-width: 500px;
   border-radius: 20px;
   box-shadow: 0 4px 16px rgba(0,80,40,0.1);
-}
-
-/* ================= CTA ================= */
-.vanphong-cta {
-  text-align: center;
-  margin: 50px 0;
-}
-.cta-btn {
-  display: inline-block;
-  background: linear-gradient(90deg, #2ecc71, #27ae60);
-  color: #fff;
-  font-size: 1.2rem;
-  padding: 14px 40px;
-  border-radius: 40px;
-  font-weight: 700;
-  text-decoration: none;
-  box-shadow: 0 4px 18px rgba(0,80,40,0.15);
-  transition: all 0.3s;
-}
-.cta-btn:hover {
-  background: linear-gradient(90deg, #27ae60, #2ecc71);
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 6px 24px rgba(0,80,40,0.18);
 }
 
 /* ================= Animation ================= */

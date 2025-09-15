@@ -119,30 +119,6 @@
   transform: scale(1.05);
 }
 
-/* CTA */
-.cta-buttons {
-  text-align: center;
-  margin-top: 40px;
-}
-
-.cta-btn {
-  display: inline-block;
-  background: linear-gradient(135deg, #28a745, #218838);
-  color: #fff;
-  font-weight: 600;
-  font-size: 1.1rem;
-  padding: 14px 28px;
-  border-radius: 50px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-.cta-btn:hover {
-  background: linear-gradient(135deg, #218838, #1e7e34);
-  transform: translateY(-3px);
-}
-
 /* RESPONSIVE */
 /* Tablet */
 @media (max-width: 992px) {
@@ -182,12 +158,6 @@
   }
   .diachi-text .address {
     font-size: 1rem;
-  }
-  .cta-btn {
-    font-size: 1rem;
-    padding: 12px 20px;
-    width: 90%;
-    max-width: 320px;
   }
 }
 

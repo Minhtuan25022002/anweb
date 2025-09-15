@@ -250,17 +250,6 @@ body {
         font-size: 0.93rem;
         padding-left: 18px;
     }
-    .cta-buttons {
-        right: 8px !important;
-        left: 8px !important;
-        bottom: 12px !important;
-        width: auto !important;
-        max-width: 98vw;
-    }
-    .cta-btn {
-        font-size: 1rem !important;
-        padding: 8px 12px !important;
-    }
 }
 
 /* ========== HERO (Thay đổi GPKD) ========== */

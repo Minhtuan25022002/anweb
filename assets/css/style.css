@@ -334,7 +334,7 @@ iframe {
 header {
     background: #fff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
-    position: sticky;
+    /* position: sticky; */
     top: 0;
     z-index: 1000;
     border-bottom: 2px solid rgba(0, 0, 0, 0.02);
@@ -592,7 +592,7 @@ nav ul ul li:not(:has(ul))>a:after {
 .hero-text {
     position: absolute;
     top: 20%;
-    left: 20%;
+    left: 30%;
     transform: translateX(-50%);
     z-index: 30;
     color: #fff;
@@ -793,7 +793,7 @@ footer a {
 /* CTA Floating Buttons (kept as-is) */
 .cta-buttons {
     position: fixed;
-    bottom: 20px;
+    bottom: 250px;
     right: 20px;
     display: flex;
     flex-direction: column;
@@ -922,7 +922,7 @@ footer a {
     }
 
     .hero-text {
-        left: 0%;
+        left: 52%;
         top: 18%;
         transform: translateX(-50%);
         max-width: 92%;

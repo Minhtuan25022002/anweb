@@ -113,24 +113,6 @@ body {
   line-height: 1.7;
 }
 
-/* ==== CTA ==== */
-.cta-buttons {
-  text-align: center;
-  margin-top: 24px;
-}
-.cta-btn {
-  background: #007a3d;
-  color: #fff;
-  padding: 12px 28px;
-  border-radius: 50px;
-  font-size: 1.1rem;
-  text-decoration: none;
-  display: inline-block;
-  transition: background 0.3s ease;
-}
-.cta-btn:hover {
-  background: #005f2e;
-}
 
 /* ==== RESPONSIVE ==== */
 @media (max-width: 900px) {
@@ -162,11 +144,6 @@ body {
   .intro-block p,
   .service-list li,
   .commitment-text p {
-    font-size: 1rem;
-  }
-  .cta-btn {
-    width: 100%;
-    padding: 14px;
     font-size: 1rem;
   }
 }

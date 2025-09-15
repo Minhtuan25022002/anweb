@@ -161,28 +161,6 @@
   margin-bottom: 15px;
 }
 
-/* ===== CTA BUTTON ===== */
-.cta-buttons {
-  text-align: center;
-  margin-top: 40px;
-}
-
-.cta-btn {
-  display: inline-block;
-  background: #2c7a4b;
-  color: #fff;
-  padding: 14px 28px;
-  border-radius: 40px;
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
-
-.cta-btn:hover {
-  background: #256c3f;
-}
-
 /* ===== ANIMATION ===== */
 @keyframes fadeUp {
   0% { opacity: 0; transform: translateY(30px); }
