@@ -198,40 +198,6 @@
   <div data-include="../../includes/footer.html"></div>
 
   <!-- small page script: scroll reveal (accessible, reduced-motion safe) -->
-  <script>
-    (function () {
-      // prefer-reduced-motion
-      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (reduce) {
-        document.querySelectorAll('.ketoan-anim').forEach(el => el.style.opacity = 1);
-        document.querySelectorAll('.ketoan-anim-btn').forEach(b => b.style.transform = 'none');
-        return;
-      }
-
-      const els = document.querySelectorAll('.ketoan-anim');
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('ketoan-anim--visible');
-            io.unobserve(e.target);
-          }
-        });
-      }, { threshold: 0.16 });
-
-      els.forEach(el => {
-        el.style.opacity = 0;
-        el.style.transform = 'translateY(18px)';
-        io.observe(el);
-      });
-
-      // small bounce on hero action button after load
-      window.addEventListener('load', () => {
-        const b = document.querySelector('.ketoan-hero__actions .ketoan-btn--primary');
-        if (b) {
-          b.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-6px)' }, { transform: 'translateY(0)' }], { duration: 1200, iterations: 2 });
-        }
-      });
-    })();
-  </script>
+  
 </body>
 </html>
